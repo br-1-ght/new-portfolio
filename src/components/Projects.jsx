@@ -25,6 +25,16 @@ const Projects = () => {
       description: 'A responsive shipping website built with REACT.',
       tags: ['REACT', 'API']
     },
+    {
+      id: 3,
+      title: 'Authentication Website',
+      category: 'redux',
+      image: './assets/images/Works3.png',
+      github: 'https://github.com/br-1-ght/Profile',
+      demo: 'https://codewithbright.netlify.app',
+      description: 'An authentication website built with REACT, Redux and Context API.',
+      tags: ['REACT', 'Context,API', 'Redux']
+    },
   ];
 
   const filteredProjects = filter === 'all' 
@@ -50,10 +60,10 @@ const Projects = () => {
             React
           </button>
           <button 
-            className={`filter-btn ${filter === 'javascript' ? 'active' : ''}`}
-            onClick={() => setFilter('javascript')}
+            className={`filter-btn ${filter === 'redux' ? 'active' : ''}`}
+            onClick={() => setFilter('redux')}
           >
-            JavaScript
+            Redux
           </button>
           <button 
             className={`filter-btn ${filter === 'node' ? 'active' : ''}`}
