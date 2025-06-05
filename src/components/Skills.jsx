@@ -2,15 +2,14 @@ import '../styles/Skill.css';
 
 const Skills = () => {
   const technicalSkills = [
-    { name: 'HTML', icon: 'g', level: 95 },
-    { name: 'CSS', icon: 'f', level: 90 },
-    { name: 'JavaScript', icon: 'd', level: 85 },
-    { name: 'React', icon: 's', level: 80 },
-    { name: 'Node.js', icon: 'a', level: 20 },
-    { name: 'Tailwind CSS', icon: 'x', level: 90 },
-    { name: 'MongoDB', icon: 'v', level: 50 },
-    { name: 'Git', icon: 'n', level: 85 },
-    { name: 'Figma', icon: 'm', level: 85 },
+    { name: 'HTML', icon: 'fi fi-br-html-file', level: 95 },
+    { name: 'CSS', icon: 'fi fi-brands-css3-alt', level: 90 },
+    { name: 'JavaScript', icon: 'fi fi-rr-javascript', level: 85 },
+    { name: 'React', icon: 'fi fi-ss-react', level: 80 },
+    { name: 'Node.js', icon: 'fi fi-brands-node-js', level: 20 },
+    { name: 'MongoDB', icon: 'fi fi-rr-database-management', level: 50 },
+    { name: 'Git', icon: 'bi bi-github', level: 85 },
+    { name: 'Figma', icon: 'fi fi-brands-figma', level: 85 },
   ];
 
   const professionalSkills = [
@@ -34,7 +33,7 @@ const Skills = () => {
               {technicalSkills.map((skill, index) => (
                 <div className="skill-item" key={index}>
                   <div className="skill-icon">
-                    {skill.icon}
+                  <i class={skill.icon}></i>
                   </div>
                   <div className="skill-info">
                     <h4>{skill.name}</h4>
