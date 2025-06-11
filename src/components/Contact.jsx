@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import '../styles/Contact.css';
 
 const Contact = () => {
@@ -12,7 +13,8 @@ const Contact = () => {
   const [formStatus, setFormStatus] = useState({
     submitted: false,
     success: false,
-    message: ''
+    message: '',
+    loading: false
   });
 
   const handleChange = (e) => {
@@ -23,18 +25,41 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Simulate form submission
     setFormStatus({
-      submitted: true,
-      success: true,
-      message: 'Your message has been sent successfully!'
+      submitted: false,
+      success: false,
+      message: '',
+      loading: true
     });
-    
-    // Reset form after submission
-    setTimeout(() => {
+
+    try {
+      emailjs.init('Na4JFa1soSpYpiobP');
+      
+      const result = await emailjs.send(
+        'service_6nprlco',
+        'template_p20ahmg',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_name: 'Bright Igwe',
+        }
+      );
+
+      console.log('Email sent successfully:', result.text);
+      console.log('Full result:', result);
+      
+      setFormStatus({
+        submitted: true,
+        success: true,
+        message: 'Your message has been sent successfully!',
+        loading: false
+      });
+      
       setFormData({
         name: '',
         email: '',
@@ -42,12 +67,44 @@ const Contact = () => {
         message: ''
       });
       
+      setTimeout(() => {
+        setFormStatus({
+          submitted: false,
+          success: false,
+          message: '',
+          loading: false
+        });
+      }, 5000);
+      
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      console.error('Error details:', error.text || error.message);
+      
+      let errorMessage = 'Failed to send message. ';
+      if (error.text) {
+        errorMessage += `Error: ${error.text}`;
+      } else if (error.message) {
+        errorMessage += `Error: ${error.message}`;
+      } else {
+        errorMessage += 'Please check your EmailJS configuration.';
+      }
+      
       setFormStatus({
-        submitted: false,
+        submitted: true,
         success: false,
-        message: ''
+        message: errorMessage,
+        loading: false
       });
-    }, 3000);
+      
+      setTimeout(() => {
+        setFormStatus({
+          submitted: false,
+          success: false,
+          message: '',
+          loading: false
+        });
+      }, 5000);
+    }
   };
 
   return (
@@ -59,7 +116,7 @@ const Contact = () => {
           <div className="contact-info">
             <div className="info-box">
               <div className="info-icon">
-                <i class="bi bi-geo-alt"></i>
+                <i className="bi bi-geo-alt"></i>
               </div>
               <div className="info-content">
                 <h3>Location</h3>
@@ -69,7 +126,7 @@ const Contact = () => {
             
             <div className="info-box">
               <div className="info-icon">
-                <i class="bi bi-envelope"></i>
+                <i className="bi bi-envelope"></i>
               </div>
               <div className="info-content">
                 <h3>Email</h3>
@@ -79,7 +136,7 @@ const Contact = () => {
             
             <div className="info-box">
               <div className="info-icon">
-                <i class="bi bi-telephone"></i>
+                <i className="bi bi-telephone"></i>
               </div>
               <div className="info-content">
                 <h3>Phone</h3>
@@ -91,13 +148,13 @@ const Contact = () => {
               <h3>Follow Me</h3>
               <div className="social-links">
                 <a href="https://github.com/br-1-ght" target="_blank" rel="noopener noreferrer">
-                    <i class="bi bi-github"></i>
+                    <i className="bi bi-github"></i>
                 </a>
                 <a href="https://www.linkedin.com/in/bright-igwe-a705ba361" target="_blank" rel="noopener noreferrer">
-                  <i class="bi bi-linkedin"></i>
+                  <i className="bi bi-linkedin"></i>
                 </a>
                 <a href="https://www.instagram.com/b2kg.e/" target="_blank" rel="noopener noreferrer">
-                  <i class="bi bi-instagram"></i>
+                  <i className="bi bi-instagram"></i>
                 </a>
               </div>
             </div>
@@ -113,6 +170,7 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="Your Name" 
                   required 
+                  disabled={formStatus.loading}
                 />
               </div>
               
@@ -124,6 +182,7 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="Your Email" 
                   required 
+                  disabled={formStatus.loading}
                 />
               </div>
               
@@ -135,6 +194,7 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="Subject" 
                   required 
+                  disabled={formStatus.loading}
                 />
               </div>
               
@@ -145,11 +205,16 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="Your Message" 
                   required
+                  disabled={formStatus.loading}
                 ></textarea>
               </div>
               
-              <button type="submit" className="btn submit-btn">
-                Send Message
+              <button 
+                type="submit" 
+                className="btn submit-btn"
+                disabled={formStatus.loading}
+              >
+                {formStatus.loading ? 'Sending...' : 'Send Message'}
               </button>
               
               {formStatus.submitted && (
