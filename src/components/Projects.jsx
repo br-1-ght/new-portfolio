@@ -35,6 +35,16 @@ const Projects = () => {
       description: 'An authentication website built with REACT, Redux and Context API.',
       tags: ['REACT', 'Context,API', 'Redux']
     },
+    {
+      id: 3,
+      title: 'Payment Gateway',
+      category: 'react',
+      image: './assets/images/Works4.png',
+      github: 'https://github.com/br-1-ght/stripe',
+      demo: 'https://mystrp.netlify.app/',
+      description: 'A modern, responsive Stripe-inspired website showcasing payment solutions, stats, and features for businesses, built with React and styled for sleek user experience and performance.',
+      tags: ['REACT', 'Context,API', 'Tailwind CSS', 'Lucide React Icons', ' useState, useEffect, useRef, useMemo', 'ESLint']
+    },
   ];
 
   const filteredProjects = filter === 'all' 
