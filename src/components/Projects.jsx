@@ -36,7 +36,7 @@ const Projects = () => {
       tags: ['REACT', 'Context,API', 'Redux']
     },
     {
-      id: 3,
+      id: 4,
       title: 'Payment Gateway',
       category: 'react',
       image: './assets/images/Works4.png',
@@ -44,6 +44,16 @@ const Projects = () => {
       demo: 'https://mystrp.netlify.app/',
       description: 'A modern, responsive Stripe-inspired website showcasing payment solutions, stats, and features for businesses, built with React and styled for sleek user experience and performance.',
       tags: ['REACT', 'Context,API', 'Tailwind CSS', 'Lucide React Icons', ' useState, useEffect, useRef, useMemo', 'ESLint']
+    },
+    {
+      id: 5,
+      title: 'E-commerce Website',
+      category: 'react',
+      image: './assets/images/Works5.png',
+      github: 'https://github.com/br-1-ght/E-commerce',
+      demo: 'https://eshopfinity.netlify.app/',
+      description: 'Shopfinity is a modern e-commerce platform that allows users to browse products, filter by category and price, add items to a cart, checkout, and manage their account. It includes user authentication, a responsive design for desktop and mobile, and toast notifications for user feedback. The application is wrapped in a ThemeProvider for consistent light/dark mode styling across all components.',
+      tags: ['REACT', 'React-Toastify', 'Tailwind CSS', 'Lucide React', 'ThemeContext']
     },
   ];
 
