@@ -7,16 +7,6 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'E-commerce Website',
-      category: 'react',
-      image: './assets/images/Works1.jpeg',
-      github: 'https://github.com/',
-      demo: 'https://project-demo.com/',
-      description: 'A full-featured e-commerce platform built with React.',
-      tags: ['React', 'Context API', 'API']
-    },
-    {
-      id: 2,
       title: 'Shipping Website',
       category: 'react',
       image: './assets/images/Works2.png',
@@ -26,17 +16,7 @@ const Projects = () => {
       tags: ['REACT', 'API']
     },
     {
-      id: 3,
-      title: 'Authentication Website',
-      category: 'redux',
-      image: './assets/images/Works3.png',
-      github: 'https://github.com/br-1-ght/Profile',
-      demo: 'https://codewithbright.netlify.app',
-      description: 'An authentication website built with REACT, Redux and Context API.',
-      tags: ['REACT', 'Context,API', 'Redux']
-    },
-    {
-      id: 4,
+      id: 2,
       title: 'Payment Gateway',
       category: 'react',
       image: './assets/images/Works4.png',
@@ -46,7 +26,7 @@ const Projects = () => {
       tags: ['REACT', 'Context,API', 'Tailwind CSS', 'Lucide React Icons', ' useState, useEffect, useRef, useMemo', 'ESLint']
     },
     {
-      id: 5,
+      id: 3,
       title: 'E-commerce Website',
       category: 'react',
       image: './assets/images/Works5.png',
@@ -55,6 +35,17 @@ const Projects = () => {
       description: 'Shopfinity is a modern e-commerce platform that allows users to browse products, filter by category and price, add items to a cart, checkout, and manage their account. It includes user authentication, a responsive design for desktop and mobile, and toast notifications for user feedback. The application is wrapped in a ThemeProvider for consistent light/dark mode styling across all components.',
       tags: ['REACT', 'React-Toastify', 'Tailwind CSS', 'Lucide React', 'ThemeContext']
     },
+    {
+      id: 4,
+      title: 'GameXperience',
+      category: 'react',
+      image: './assets/images/Works6.png',
+      github: 'https://github.com/br-1-ght/gameHub',
+      demo: 'https://gamesxperience.netlify.app/',
+      description: 'GameXperience is an interactive gaming platform that allows users to browse, search, and view detailed information about video games using the RAWG API. It features user authentication with local session storage, profile management, game favorites, and responsive design. The platform integrates a custom session manager, real-time favorites synchronization, and a clean UI optimized for both desktop and mobile.',
+      tags: ['React', 'Tailwind CSS', 'RAWG API', 'MockAPI', 'Session Management']
+    }
+
   ];
 
   const filteredProjects = filter === 'all' 
